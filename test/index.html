@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>eleventy-bkgimg</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<style>
+	#html {
+		background: url(thumb.png);
+	}
+	#values {
+		background: bottom/contain url(thumb.png);
+	}
+	#atr-width-auto {
+		background-image: url(character2.png?widths="auto");
+	}
+	#atr-width-int {
+		background-image: url(character2.png?widths=1000);
+	}
+	#atr-width-multi {
+		/* Running test serve should give pointer to following line */
+		background-image: url(character2.png?widths=[1000,2000,"auto"]);
+	}
+	#atr-width-fallback {
+		/* Running test serve should give pointer to following line */
+		background-image: url(character2.png?widths="otua");
+	}
+
+	#atr-ignore-local {
+		background-image: url(character2.png?ignore);
+	}
+	#atr-ignore-remote {
+		background-image: url(https://images.unsplash.com/photo-1464802686167-b939a6910659?ignore);
+	}
+	</style>
+	<h1>Eleventy Background Image Testing</h1>
+	<a href="/address/">Switch to Addresses</a>
+
+	<h2>Background set inline</h2>
+	<div id="inline" style="background: url(thumb.png);"></div>
+
+	<h2>Background set within style tag</h2>
+	<div id="html"></div>
+
+	<h2>Background set within external stylesheet</h2>
+	<div id="css"></div>
+
+	<h2>Background property with values</h2>
+	<div id="values"></div>
+
+	<div class="preset">
+		<h2>Background with Width Attribute: Auto</h2>
+		<div id="atr-width-auto"></div>
+
+		<h2>Background with Width Attribute: Interger</h2>
+		<div id="atr-width-int"></div>
+
+		<h2>Background with Width Attribute: Multiple options</h2>
+		<div id="atr-width-multi"></div>
+
+		<h2>Background with Width Attribute: Invalid string fallback </h2>
+		<div id="atr-width-fallback"></div>
+
+		<h2>Background with Format Attribute</h2>
+		<div id="atr-format"></div>
+
+		<h2>Background with Ignore Attribute: Local Image</h2>
+		<div id="atr-ignore-local"></div>
+
+		<h2>Background with Ignore Attribute: Remote Image</h2>
+		<div id="atr-ignore-remote"></div>
+
+		<h2>Background with Optional Attribute</h2>
+		<div id="atr-option"></div>
+
+		<h2>Background with Output Attribute</h2>
+		<div id="atr-output"></div>
+	</div>
+</body>
+</html>

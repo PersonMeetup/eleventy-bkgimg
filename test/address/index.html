@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>eleventy-bkgimg</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<style>
+		#rel-inner {
+			background-image: url(./landscape1.png);
+		}
+		#rel-outer {
+			background-image: url(../character1.png);
+		}
+		#abs-inner {
+			background-image: url(/address/landscape2.jpg);
+		}
+		#abs-outer {
+			background-image: url(/character2.png);
+		}
+		#remote {
+			background-image: url(https://images.unsplash.com/photo-1464802686167-b939a6910659);
+		}
+		#rel-inner-ignore {
+			background-image: url(./landscape1.png?ignore);
+		}
+		#rel-outer-ignore {
+			background-image: url(../character1.png?ignore);
+		}
+		#abs-inner-ignore {
+			background-image: url(/address/landscape2.jpg?ignore);
+		}
+		#abs-outer-ignore {
+			background-image: url(/character2.png?ignore);
+		}
+		#remote-ignore {
+			background-image: url(https://images.unsplash.com/photo-1464802686167-b939a6910659?ignore);
+		}
+	</style>
+	<h1>Eleventy Background Image Testing: Addresses</h1>
+	<a href="/">Go Back</a>
+	<div class="preset">
+		<h2>Relative background within directory</h2>
+		<div id="rel-inner"></div>
+
+		<h2>Relative background outside directory</h2>
+		<div id="rel-outer"></div>
+
+		<h2>Absoulte background within directory</h2>
+		<div id="abs-inner"></div>
+
+		<h2>Absoulte background outside directory</h2>
+		<div id="abs-outer"></div>
+
+		<h2>Background from remote source</h2>
+		<div id="remote"></div>
+		<hr>
+
+		<h2>Relative background with Ignore Attribute within directory</h2>
+		<div id="rel-inner-ignore"></div>
+
+		<h2>Relative background with Ignore Attribute outside directory</h2>
+		<div id="rel-outer-ignore"></div>
+
+		<h2>Absolute background with Ignore Attribute within directory</h2>
+		<div id="abs-inner-ignore"></div>
+
+		<h2>Absolute background with Ignore Attribute outside directory</h2>
+		<div id="abs-outer-ignore"></div>
+
+		<h2>Background from remote source</h2>
+		<div id="remote-ignore"></div>
+	</div>
+
+</body>
+</html>

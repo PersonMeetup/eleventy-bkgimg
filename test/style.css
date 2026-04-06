@@ -1,0 +1,14 @@
+div[id] {
+	width: 1000px;
+	height: 500px;
+	margin-bottom: 2rem;
+	background-color: #46a;
+}
+
+.preset div[id] {
+	background: center/cover #46a;
+}
+
+#css {
+	background: url(/thumb.png);
+}

@@ -1,0 +1,17 @@
+{
+	"name": "eleventy-bkgimg",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "eleventy --serve"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@11ty/eleventy": "^3.1.5",
+		"@11ty/eleventy-img": "^6.0.4"
+	}
+}
