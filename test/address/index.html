@@ -23,6 +23,7 @@
 			#remote {
 				background-image: url(https://images.unsplash.com/photo-1464802686167-b939a6910659);
 			}
+
 			#rel-inner-ignore {
 				background-image: url(./landscape1.png?ignore);
 			}
@@ -37,6 +38,19 @@
 			}
 			#remote-ignore {
 				background-image: url(https://images.unsplash.com/photo-1464802686167-b939a6910659?ignore);
+			}
+
+			#atr-output-rel {
+				background-image: url(landscape2.jpg?output=./directory/);
+			}
+			#atr-output-abs {
+				background-image: url(landscape2.jpg?output="/directory/");
+			}
+			#atr-output-subrel {
+				background-image: url(../character1.png?output=./directory/);
+			}
+			#atr-output-subabs {
+				background-image: url(../character1.png?output="/directory/");
 			}
 		</style>
 		<h1>Eleventy Background Image Testing: Addresses</h1>
@@ -56,6 +70,7 @@
 
 			<h2>Background from remote source</h2>
 			<div id="remote"></div>
+
 			<hr />
 
 			<h2>Relative background with Ignore Attribute within directory</h2>
@@ -72,6 +87,24 @@
 
 			<h2>Background from remote source</h2>
 			<div id="remote-ignore"></div>
+
+			<hr />
+
+			<h2>Background with Output Attribute: Relative directory</h2>
+			<div id="atr-output-rel"></div>
+
+			<h2>Background with Output Attribute: Absolute directory</h2>
+			<div id="atr-output-abs"></div>
+
+			<h2>
+				Background with Output Attribute: Nested image & Relative directory
+			</h2>
+			<div id="atr-output-subrel"></div>
+
+			<h2>
+				Background with Output Attribute: Nested image & Absolute directory
+			</h2>
+			<div id="atr-output-subabs"></div>
 		</div>
 	</body>
 </html>
