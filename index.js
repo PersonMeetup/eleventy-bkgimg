@@ -186,17 +186,6 @@ export default function (eleventyConfig, options = {}) {
 		return `${content} `;
 	}
 
-	// TODO: Make sure this doesn't conflict with other plugins, such as the PostCSS one!
-	eleventyConfig.addTemplateFormats("css");
-	eleventyConfig.addExtension("css", {
-		outputFileExtension: "css",
-		compile: async (inputContent) => {
-			return async () => {
-				return inputContent;
-			};
-		},
-	});
-
 	eleventyConfig.addTransform("background-image", async function (content) {
 		const path = this.page.outputPath || "";
 		if (path.endsWith(".html") || path.endsWith(".css"))
