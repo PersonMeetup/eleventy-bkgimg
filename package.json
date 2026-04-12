@@ -2,7 +2,7 @@
 	"name": "eleventy-bkgimg",
 	"version": "1.0.0",
 	"type": "module",
-	"description": "",
+	"description": "Adds background image processing to CSS",
 	"main": "index.js",
 	"scripts": {
 		"test": "eleventy --serve"
@@ -13,5 +13,17 @@
 	"dependencies": {
 		"@11ty/eleventy": "^3.1.5",
 		"@11ty/eleventy-img": "^6.0.4"
-	}
+	},
+	"directories": {
+		"test": "test"
+	},
+	"devDependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/PersonMeetup/eleventy-bkgimg.git"
+	},
+	"bugs": {
+		"url": "https://github.com/PersonMeetup/eleventy-bkgimg/issues"
+	},
+	"homepage": "https://github.com/PersonMeetup/eleventy-bkgimg#readme"
 }
