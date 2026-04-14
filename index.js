@@ -32,7 +32,7 @@ export default function (eleventyConfig, options = {}) {
 			let images = [];
 			// Look for url() functions in background properties
 			const backgrounds = content.matchAll(
-				/(?:.|\s){2,9}(?<!\/\*)background(?:.?|-image):.*?url\(.*?\)(?:.|\s){1,9}/g,
+				/(?:.|\s){2,9}(?<!\/\*)background(?:.?|-image):.*?url\(.*?\)(?:.|\s){1,9}?/g,
 			);
 			for (const bkg of backgrounds) {
 				// Isolate the image path
