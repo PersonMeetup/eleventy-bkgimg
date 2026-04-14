@@ -18,7 +18,6 @@ export default function (eleventyConfig, options = {}) {
 		{
 			// If urlPath not set, assume default setting
 			outputDir: path.join(OUTPUT_DIR, options.urlPath || "/img/"),
-			extensions: "html,njk,liquid,css",
 		},
 		options,
 	);
@@ -28,22 +27,22 @@ export default function (eleventyConfig, options = {}) {
 	}
 
 	async function transformBackgrounds(page, content) {
-		let dataErrors = [];
 		if (typeof content == "string") {
-			// Grab the `url()` snippet, check for image
+			let dataErrors = [];
 			let images = [];
+			// Look for url() functions in background properties
 			const backgrounds = content.matchAll(
-				/(?:.|\s){2,9}(?<!\/\*)background(?:.?|-image):.*url\(.*\)(?:.|\s){1,9}/g,
+				/(?:.|\s){2,9}(?<!\/\*)background(?:.?|-image):.*?url\(.*?\)(?:.|\s){1,9}/g,
 			);
 			for (const bkg of backgrounds) {
-				const url = bkg[0].match(/url\((?:'?|"?)(.*)(?:'?|"?)\)/).at(1);
+				// Isolate the image path
+				const url = bkg[0].match(/url\((?:'|"?)(.*?)(?:'|"?)\)/).at(1);
 				if (url !== "" || !url.includes(".css"))
 					images.push({
 						bkgCtx: bkg[0],
 						bkgUrl: url,
 					});
 			}
-			if (!images) return content;
 
 			image: for (let img of images) {
 				const { inputPath, url } = page;
@@ -168,22 +167,22 @@ export default function (eleventyConfig, options = {}) {
 					);
 				}
 			}
+
+			if (dataErrors.length > 0) {
+				let msg = `Problems while preprocessing url() functions in ${page.inputPath} `;
+				let i = 1;
+				dataErrors.forEach((error) => {
+					msg += `\n${i++}. ${error} `;
+				});
+				eleventyConfig?.logger?.logWithOptions({
+					message: msg,
+					prefix: "[11ty/11ty-bkgimg]",
+					color: "yellow",
+				});
+			}
 		}
 
-		if (dataErrors.length > 0) {
-			let msg = `Problems while preprocessing url() functions in ${page.inputPath} `;
-			let i = 1;
-			dataErrors.forEach((error) => {
-				msg += `\n${i++}. ${error} `;
-			});
-			eleventyConfig?.logger?.logWithOptions({
-				message: msg,
-				prefix: "[11ty/11ty-bkgimg]",
-				color: "yellow",
-			});
-		}
-
-		return `${content} `;
+		return content;
 	}
 
 	eleventyConfig.addTransform("background-image", async function (content) {
@@ -193,6 +192,4 @@ export default function (eleventyConfig, options = {}) {
 
 		return content;
 	});
-
-	// eleventyConfig.htmlTransformer.addPosthtmlPlugin("html", asdf, { priority: -1 });
 }
