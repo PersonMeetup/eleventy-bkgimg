@@ -52,7 +52,7 @@ export default function (eleventyConfig, options = {}) {
 					bkgUrl,
 				);
 				/** @type {import("@11ty/eleventy-img/").ImageOptions}  */
-				let imageOptions = structuredClone(pluginOptions);
+				let imageOptions = Object.assign({}, pluginOptions);
 
 				// Check if the address is local or external
 				let local = false;
