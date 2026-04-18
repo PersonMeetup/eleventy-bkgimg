@@ -36,7 +36,7 @@ export default function (eleventyConfig, options = {}) {
 			);
 			for (const bkg of backgrounds) {
 				// Isolate the image path
-				const url = bkg[0].match(/url\((?:'|"?)(.*?)(?:'|"?)\)/).at(1);
+				const url = bkg[0].match(/url\((['"])?(.*?)\1\)/).at(2);
 				if (url !== "" || !url.includes(".css"))
 					images.push({
 						bkgCtx: bkg[0],
